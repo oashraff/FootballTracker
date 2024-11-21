@@ -1,0 +1,301 @@
+/* Base styles */
+
+body {
+  background: linear-gradient(to bottom right, #f0f9ff, #f3f4f6);
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  transition: colors 0.2s;
+}
+
+/* Dark mode styles */
+
+body.dark {
+  background: linear-gradient(to bottom right, #111827, #1f2937);
+  color: #f3f4f6;
+}
+
+/* Dark mode toggle */
+
+#darkModeToggle {
+  position: relative;
+  display: inline-flex;
+  height: 1.5rem;
+  width: 2.75rem;
+  align-items: center;
+  border-radius: 9999px;
+  background-color: #e5e7eb;
+  transition: background-color 0.3s;
+}
+
+#darkModeToggle.dark {
+  background-color: #374151;
+}
+
+#darkModeToggle span:last-child {
+  display: inline-block;
+  height: 1rem;
+  width: 1rem;
+  transform: translateX(0.25rem);
+  border-radius: 9999px;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+#darkModeToggle.dark span:last-child {
+  transform: translateX(1.5rem);
+}
+
+/* Dark mode toggle text */
+#darkModeToggle + span {
+  color: #1e3a8a;  /* Same blue as the title */
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-left: 0.75rem;
+}
+
+body.dark #darkModeToggle + span {
+  color: #dbeafe;  /* Same light blue as the title in dark mode */
+}
+
+/* Container styles */
+
+.container {
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  max-width: 72rem;
+}
+
+/* Heading styles */
+
+h1 {
+  font-size: 2.25rem;
+  text-align: center;
+  font-weight: 800;
+  color: #1e3a8a;
+  margin-bottom: 2rem;
+  letter-spacing: -0.025em;
+}
+
+body.dark h1 {
+  color: #dbeafe;
+}
+
+/* Loader styles */
+
+#loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  gap: 1rem;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+#loader.loader-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 3px solid #f3f4f6;
+  border-top: 3px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+body.dark .spinner {
+  border-color: #374151;
+  border-top-color: #60a5fa;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Leagues container */
+
+#leagues-container {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 1.5rem;
+  justify-content: flex-start;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#leagues-container::-webkit-scrollbar {
+  display: none;
+}
+
+body.dark #leagues-container {
+  background-color: #1f2937;
+}
+
+/* League buttons */
+
+.league-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #f9fafb;
+  transition: all 0.2s;
+  color: #1f2937;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.league-button:hover {
+  background-color: #e5e7eb;
+}
+
+.league-button.active {
+  background-color: #3b82f6;
+  color: white;
+}
+
+body.dark .league-button {
+  background-color: #374151;
+  color: #f3f4f6;
+}
+
+body.dark .league-button:hover {
+  background-color: #4b5563;
+}
+
+body.dark .league-button.active {
+  background-color: #3b82f6;
+  color: white;
+}
+
+/* Fixtures container */
+
+#fixtures-container {
+  display: grid;
+  gap: 1.5rem;
+  padding: 0 0.5rem;
+}
+
+@media (min-width: 768px) {
+  #fixtures-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  #fixtures-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Fixture cards */
+
+.fixture-card {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.2s;
+  color: #1f2937;
+}
+
+.fixture-card:hover {
+  transform: scale(1.02);
+}
+
+body.dark .fixture-card {
+  background-color: #1f2937;
+  color: #f3f4f6;
+}
+
+/* Add general text color for dark mode */
+body.dark {
+  background: linear-gradient(to bottom right, #111827, #1f2937);
+  color: #f3f4f6;
+}
+
+/* Month buttons - Add these styles */
+.month-button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #f9fafb;
+  transition: all 0.2s;
+  color: #1f2937;
+  border: none;
+  cursor: pointer;
+}
+
+.month-button:hover {
+  background-color: #e5e7eb;
+}
+
+.month-button.active {
+  background-color: #3b82f6;
+  color: white;
+}
+
+body.dark .month-button {
+  background-color: #374151;
+  color: #f3f4f6;
+}
+
+body.dark .month-button:hover {
+  background-color: #4b5563;
+}
+
+body.dark .month-button.active {
+  background-color: #3b82f6;
+  color: white;
+}
+
+/* Month selector styling */
+.month-selector {
+  margin: 1rem 0;
+  width: 100%;
+  max-width: 300px;
+}
+
+.month-dropdown {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  background-color: white;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Dark mode styles */
+body.dark .league-button {
+  background-color: #374151;
+  color: #f3f4f6;
+}
+
+body.dark .league-button.active {
+  background-color: #3b82f6;
+  color: white;
+}
+
+body.dark .month-dropdown {
+  background-color: #1f2937;
+  color: #f3f4f6;
+  border-color: #374151;
+}

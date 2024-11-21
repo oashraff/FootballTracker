@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Football Fixtures</title>
+  <link rel="icon" type="image/svg+xml" href="https://www.svgrepo.com/download/486332/football-field.svg">
+  <script src="app.js" defer></script>
+  <script src="darkMode.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Dark mode toggle -->
+  <div style="position: absolute; top: 1rem; right: 1rem; display: flex; align-items: center;">
+    <button id="darkModeToggle" role="switch" aria-checked="false">
+      <span class="sr-only"></span>
+    </button>
+    <span style="margin-left: 0.75rem; font-size: 0.875rem; font-weight: 500;" class="dark:text-white">Dark mode</span>
+  </div>
+
+  <div class="container">
+    <h1 class="dark:text-white">Football Fixtures</h1>
+    
+    <!-- Loader -->
+    <div id="loader" class="loader-hidden">
+      <div class="spinner"></div>
+      <span class="dark:text-white">Loading...</span>
+    </div>
+    
+    <!-- Leagues container -->
+    <div id="leagues-container" class="dark:text-white">
+      <!-- League buttons will be dynamically added here -->
+    </div>
+
+    <!-- Month selector (hidden by default) -->
+    <div id="month-selector" class="month-selector hidden">
+      <select id="month-dropdown" class="month-dropdown dark:bg-gray-800 dark:text-white">
+        <option value="">Select Month</option>
+      </select>
+    </div>
+
+    <!-- Fixtures container -->
+    <div id="fixtures-container" class="dark:text-white">
+      <!-- Fixtures will be dynamically added here -->
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      
+      darkModeToggle.checked = !document.documentElement.classList.contains('dark');
+
+      darkModeToggle.addEventListener('change', function() {
+        if (!this.checked) {
+          document.documentElement.classList.add('dark');
+          localStorage.theme = 'dark';
+          toggleDarkMode(true);
+        } else {
+          document.documentElement.classList.remove('dark');
+          localStorage.theme = 'light';
+          toggleDarkMode(false);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
