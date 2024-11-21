@@ -1,4 +1,6 @@
-const API_KEY = process.env.API_KEY || ""; // Will be populated from .env file
+const config = {
+    API_KEY: "" 
+};
 const API_URL = 'https://v3.football.api-sports.io/status';
 
 // Add this near the top of your file with your other constants
@@ -25,7 +27,7 @@ async function checkApiStatus() {
         const response = await fetch(API_URL, {
             method: 'GET',
             headers: {
-                'x-apisports-key': API_KEY
+                'x-apisports-key': config.API_KEY
             }
         });
 
@@ -69,7 +71,7 @@ async function fetchFixtures() {
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
-                    'x-apisports-key': API_KEY
+                    'x-apisports-key': config.API_KEY
                 }
             });
 
